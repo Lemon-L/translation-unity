@@ -20,7 +20,7 @@ namespace MicrosoftTranslatorSdk
 {
 	public class TranslationConfig
 	{
-		public const string CLIENT_ID = "apache";
-		public const string CLIENT_SECRET = "TJnqQZQW8/2o/ZsHAFZGMerr4WuPbvq1lGLi+MI3Kd8=";
+		public const string CLIENT_ID = "YOUR_ID";
+		public const string CLIENT_SECRET = "YOUR_SECRET";
 	}
 }
