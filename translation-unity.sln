@@ -1,9 +1,9 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{70926A09-624A-B287-05C8-046F19A202A4}") = "translation-unity", "Assembly-CSharp-firstpass.csproj", "{93466DD1-9113-BDB2-F154-3ED2F83595EF}"
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "translation-unity", "Assembly-CSharp-firstpass.csproj", "{93466DD1-9113-BDB2-F154-3ED2F83595EF}"
 EndProject
-Project("{70926A09-624A-B287-05C8-046F19A202A4}") = "translation-unity", "Assembly-CSharp.csproj", "{8C9272BF-6525-030A-C8CB-7F9BC7781F19}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "translation-unity", "Assembly-CSharp.csproj", "{8C9272BF-6525-030A-C8CB-7F9BC7781F19}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
