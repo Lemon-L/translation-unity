@@ -23,6 +23,12 @@ public class Example : MonoBehaviour {
 
 	public void OnClick(){
 		var original = input.text;
-		Debug.Log (TranslationSystem.Instance.TranslateMethod (original,"zh-CHS"));
+		//c# webrequest
+		Debug.Log (TranslationSystem.Instance.TranslateMethod (original, "zh-CHS"));
+
+		//unity coroutine(www)
+		TranslationSystem.Instance.TranslateMethod (original, "zh-CHS", (arg) => {
+			Debug.Log (arg);
+		});
 	}
 }

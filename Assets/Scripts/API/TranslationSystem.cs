@@ -14,7 +14,7 @@
 //         .............................................  
 //                  GEKKO <=> NEVER BUG 
 using System.Collections.Generic;
-using System.Linq;
+using System.Collections;
 using System.Text;
 using System.Net;
 using System.IO;
@@ -76,7 +76,6 @@ namespace MicrosoftTranslatorSdk
 		}
 
 		#region API
-
 		public void DetectMethod (string textToDetect)
 		{
 			//Keep appId parameter blank as we are sending access token in authorization header.
@@ -102,8 +101,7 @@ namespace MicrosoftTranslatorSdk
 			}
 		}
 
-		public string TranslateMethod (string textToDetect, string to)
-		{
+		public string TranslateMethod (string textToDetect, string to){
 			string uri = "http://api.microsofttranslator.com/v2/Http.svc/Translate?text=" + WWW.EscapeURL (textToDetect) + "&from=" + "&to=" + to;
 			HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create (uri);
 			httpWebRequest.Headers.Add ("Authorization", headerValue);
@@ -126,10 +124,22 @@ namespace MicrosoftTranslatorSdk
 			}
 		}
 
-		private void SendPost(){
-			
+		public void TranslateMethod (string textToDetect, string to, Action<string> callback){
+			StartCoroutine (Translate (textToDetect, to, callback));
 		}
-
+		IEnumerator Translate(string textToDetect, string to, Action<string> callback){
+			string uri = "http://api.microsofttranslator.com/v2/Http.svc/Translate?text=" + WWW.EscapeURL (textToDetect) + "&from=" + "&to=" + to;
+			Dictionary<string,string> headers = new Dictionary<string, string> ();
+			headers.Add ("Authorization", headerValue);
+			WWW www = new WWW (uri, null, headers);
+			yield return www;
+			if (www.error != null) {
+				callback (www.error);
+			} else {
+				var result = Regex.Replace (www.text, "<([^>]*)>", "");
+				callback (result);
+			}
+		}
 		#endregion
 	}
 }
